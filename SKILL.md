@@ -42,6 +42,17 @@ Determine only what is useful for prompt construction:
 
 ### 2. Build the visual skeleton
 
+Before interpreting the visible background, inspect source image properties when file metadata or image tooling is available:
+
+- pixel dimensions
+- alpha/transparency
+- palette transparency
+- obvious cropping or thumbnail scale
+
+Do not mistake a viewer's black, white, or checkerboard matte for the actual image background.
+
+If the image is very small or heavily compressed, prioritize large-scale silhouette, color blocks, pose, and composition. Avoid inventing micro-details that the source cannot support.
+
 Describe:
 
 - subject count
@@ -210,6 +221,8 @@ Before answering, silently verify:
 - Are framing, viewpoint, and composition captured?
 - Did you account for negative space, major shadow shapes, or leading lines if they dominate the image?
 - Did you capture depth-of-field / blur behavior when it strongly affects the image?
+- If source transparency is available, did you avoid mistaking the preview matte for a real background?
+- If the source is low-resolution, did you avoid unsupported micro-detail?
 - For recognizable characters or mascots, did you separate canonical design traits from image-specific traits?
 - Are the top visual anchors present early in the prompt?
 - Did you avoid unsupported technical guesses?
