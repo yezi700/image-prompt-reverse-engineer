@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Prompt Reverse Engineer"
+  short_description: "Reverse images into high-fidelity generation prompts"
+  default_prompt: "Use $image-prompt-reverse-engineer to reverse-engineer this reference image into a high-fidelity AI image prompt."
