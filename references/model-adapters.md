@@ -71,7 +71,9 @@ Avoid unnecessarily fragmented tags.
 - A 600×400 reference is 3:2; do not substitute 4:3.
 - Explicitly state mirror-sensitive directions, e.g. which side a flower head, tail, face, or prop occupies.
 - Preserve asymmetry. Do not turn a loose forest path into a perfectly centered tunnel unless the reference is actually symmetric.
-- For recognizable characters, if the user wants the exact character, use the character name plus canonical traits and the source-specific pose. If the user wants a generic/non-IP equivalent, omit the name.
+- Preserve meaningful imperfections; Qwen may otherwise clean up wilted flowers, rough textures, irregular spacing, or other non-ideal details.
+- For recognizable characters, if the user wants the exact character, use the character name plus canonical traits and the source-specific pose. If the canonical character prior starts overriding the reference pose, move the source-specific pose, limb placement, crop, scale, and silhouette before the character name.
+- If the user wants a generic/non-IP equivalent, omit the character name.
 
 
 ## FLUX
