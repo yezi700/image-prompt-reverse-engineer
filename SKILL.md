@@ -120,6 +120,7 @@ Use multiple anchor types when helpful:
 - **geometry anchors**: source aspect ratio, subject scale, center position, left/right orientation, non-mirroring constraints, and diagonal direction
 - **composition anchors**: framing, placement, viewpoint, leading lines, negative space, major shadow shapes, symmetry/asymmetry, or blur behavior
 - **style anchors**: medium/rendering traits that strongly affect recognition
+- **imperfection anchors**: asymmetry, wear, wilt, roughness, blemishes, irregular edges, imperfect grooming, uneven foliage, or other non-ideal traits that the model might otherwise beautify away
 
 Good anchors:
 
@@ -161,7 +162,9 @@ Typical priority hierarchy:
 
 If the image is minimalist, geometric, poster-like, or highly stylized, composition and shadow shape may outrank fine subject detail.
 
-Do not over-amplify an anchor merely because it is distinctive. Preserve its strength in the reference. A slight path opening should not become a perfectly symmetric tunnel; a modest shadow edge should not become a theatrical spotlight unless the reference supports that.
+Do not over-amplify an anchor merely because it is distinctive. Preserve its strength in the reference.
+
+Do not silently beautify or normalize the source. If imperfections materially affect resemblance, preserve them explicitly. Examples include wilted petals, uneven leaves, worn surfaces, irregular tree spacing, imperfect symmetry, natural skin texture, messy hair edges, or non-ideal object proportions. A slight path opening should not become a perfectly symmetric tunnel; a modest shadow edge should not become a theatrical spotlight unless the reference supports that.
 
 If the image contains a well-known character, mascot, or recurring design, canonical silhouette and body structure may outrank local rendering details.
 
@@ -199,7 +202,9 @@ In these cases, prioritize silhouette and body structure before micro-details.
 
 For simple cartoon or mascot-like subjects, a strong silhouette can be more important than texture or lighting.
 
-For exact-character recreation, preserve the source pose, limb directions, body tilt, face direction, and crop. Do not let the canonical character identity override the specific pose shown in the reference.
+For exact-character recreation, preserve the source pose, limb directions, body tilt, face direction, crop, and subject scale. Do not let the canonical character identity override the specific pose shown in the reference.
+
+If a named character appears to have a strong canonical prior, switch to **reference-faithful ordering**: describe the source-specific pose, silhouette, limb placement, viewing angle, crop, and geometry first; mention the character identity later. When useful, provide a second identity-first variant for comparison rather than assuming the name should lead the prompt.
 
 ### 9. Adapt to the target model
 
@@ -240,7 +245,7 @@ Before answering, silently verify:
 - Are pose/action and gaze correct where relevant?
 - Are subject-object relationships explicit?
 - Is the source aspect ratio preserved or explicitly surfaced?
-- Are the primary subject's approximate position and scale captured?
+- Are the primary subject's approximate position and scale captured, using normalized fractions or percentages when useful?
 - Are mirror-sensitive directions explicit where needed?
 - Are framing, viewpoint, symmetry/asymmetry, and composition captured?
 - Did you account for negative space, major shadow shapes, or leading lines if they dominate the image?
@@ -251,6 +256,7 @@ Before answering, silently verify:
 - Are the top visual anchors present early in the prompt?
 - Did you avoid unsupported technical guesses?
 - Did you preserve anchor strength instead of exaggerating it?
+- Did you preserve meaningful imperfections instead of beautifying or regularizing them?
 - Did you avoid generic quality-word padding?
 - Did you include only relevant subject-specific details?
 - Does the final prompt read naturally and remain directly usable?
