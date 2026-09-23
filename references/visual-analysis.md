@@ -228,6 +228,8 @@ Example:
 
 If the subject is a recurring character or mascot, also read the **Recognizable characters and mascots** section.
 
+When the source is a PNG or other format that may contain transparency, verify transparency when tools or metadata are available. Do not treat the preview matte as a real black or white background.
+
 ## Minimal still life and negative space
 
 For minimalist still life, simple product setups, and sparse editorial images, do not underestimate:
@@ -314,6 +316,13 @@ Traits specific to the current image:
 - shading style
 
 For mascot-like or cartoon subjects, prioritize silhouette and structure before micro-detail.
+
+For tiny icons, thumbnails, or heavily compressed references:
+
+- trust only clearly visible macro features
+- prioritize silhouette, major color regions, pose, and iconic structure
+- avoid guessing subtle line quality, texture, lighting, or facial micro-detail
+- preserve uncertainty rather than filling missing information with plausible detail
 
 Examples:
 
