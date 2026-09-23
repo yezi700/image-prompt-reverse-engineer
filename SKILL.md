@@ -53,16 +53,29 @@ Do not mistake a viewer's black, white, or checkerboard matte for the actual ima
 
 If the image is very small or heavily compressed, prioritize large-scale silhouette, color blocks, pose, and composition. Avoid inventing micro-details that the source cannot support.
 
+Preserve source geometry before interpreting style:
+
+- source pixel dimensions when available
+- simplified source aspect ratio
+- portrait / landscape / square orientation
+- approximate primary-subject bounding box: center position, width, and height as fractions of the frame
+- left/right orientation of faces, bodies, props, stems, vehicles, light boundaries, and diagonals
+- symmetry versus asymmetry
+- whether an important feature is subtle, moderate, or dominant
+
+Do not silently recenter, mirror, crop tighter, widen, or beautify the composition.
+
 Describe:
 
 - subject count
 - shot size / framing
 - viewpoint and camera height
 - front / side / three-quarter / back / over-the-shoulder orientation
-- subject placement
-- composition pattern
+- subject placement using approximate frame regions or fractions
+- composition pattern and degree of symmetry
 - perspective strength
 - foreground / midground / background relationships
+- directional relationships such as left-to-right, right-to-left, upper-left to lower-right, and vice versa
 
 Spatial relationships matter more than decorative adjectives.
 
@@ -104,7 +117,8 @@ Use multiple anchor types when helpful:
 
 - **subject anchors**: who/what the subject is and its defining appearance
 - **relationship anchors**: how the subject interacts with props, objects, or the environment
-- **composition anchors**: framing, placement, viewpoint, leading lines, negative space, major shadow shapes, or blur behavior
+- **geometry anchors**: source aspect ratio, subject scale, center position, left/right orientation, non-mirroring constraints, and diagonal direction
+- **composition anchors**: framing, placement, viewpoint, leading lines, negative space, major shadow shapes, symmetry/asymmetry, or blur behavior
 - **style anchors**: medium/rendering traits that strongly affect recognition
 
 Good anchors:
@@ -147,6 +161,8 @@ Typical priority hierarchy:
 
 If the image is minimalist, geometric, poster-like, or highly stylized, composition and shadow shape may outrank fine subject detail.
 
+Do not over-amplify an anchor merely because it is distinctive. Preserve its strength in the reference. A slight path opening should not become a perfectly symmetric tunnel; a modest shadow edge should not become a theatrical spotlight unless the reference supports that.
+
 If the image contains a well-known character, mascot, or recurring design, canonical silhouette and body structure may outrank local rendering details.
 
 ### 7. Write the prompt in weighted order
@@ -155,7 +171,7 @@ Put the highest-impact information in the first third of the prompt.
 
 Recommended order:
 
-subject → pose/action → subject-object relationship → composition/viewpoint → distinctive appearance/structure → negative space / leading lines / shadow geometry when important → lighting → color → material → background/depth → medium/style → finishing characteristics
+source orientation / aspect-ratio note when relevant → subject → pose/action → subject-object relationship → subject size and exact frame position → left/right orientation and non-mirroring constraints → composition/viewpoint → distinctive appearance/structure → negative space / leading lines / shadow geometry when important → lighting → color → material → background/depth → medium/style → finishing characteristics
 
 Use coherent natural language. Avoid long tag dumps unless the target model benefits from tags.
 
@@ -166,6 +182,8 @@ If text or branding is visually important, describe placement, typography, color
 Do not pretend an image model will reliably reproduce exact readable text. Mention that exact text is better added in a later editing/layout step when relevant.
 
 For recognizable characters or styles, prioritize concrete visual traits and composition instead of making the prompt depend on a name alone.
+
+If the user explicitly wants faithful recreation of a recognizable fictional character and naming it is appropriate, include the character name together with canonical visual traits. If the user asks for a generic or non-IP version, omit the name and keep only visual traits.
 
 ### 8.5. Special handling for recognizable characters, mascots, and recurring designs
 
@@ -180,6 +198,8 @@ When the subject is a recognizable fictional character, mascot, or strongly stan
 In these cases, prioritize silhouette and body structure before micro-details.
 
 For simple cartoon or mascot-like subjects, a strong silhouette can be more important than texture or lighting.
+
+For exact-character recreation, preserve the source pose, limb directions, body tilt, face direction, and crop. Do not let the canonical character identity override the specific pose shown in the reference.
 
 ### 9. Adapt to the target model
 
@@ -205,9 +225,10 @@ For ordinary user requests, keep the response practical and compact. Default to:
 2. **视觉锚点** — 3–7 ordered items
 3. **关系锚点** — only when subject-object interaction matters
 4. **构图锚点** — only when composition, negative space, leading lines, shadow geometry, or blur strength strongly affect similarity
-5. **正向提示词** — one ready-to-use natural-language prompt
-6. **负向 / Avoid** — only when useful for the target model
-7. **模型适配说明** — only if a target model is specified or the user asks
+5. **几何信息** — source aspect ratio and any mirror-sensitive / placement-critical constraints when fidelity depends on them
+6. **正向提示词** — one ready-to-use natural-language prompt
+7. **负向 / Avoid** — only when useful for the target model
+8. **模型适配说明** — only if a target model is specified or the user asks
 
 If the user explicitly asks only for the prompt, output the prompt directly and omit analysis.
 
@@ -218,7 +239,10 @@ Before answering, silently verify:
 - Is the true primary subject identified?
 - Are pose/action and gaze correct where relevant?
 - Are subject-object relationships explicit?
-- Are framing, viewpoint, and composition captured?
+- Is the source aspect ratio preserved or explicitly surfaced?
+- Are the primary subject's approximate position and scale captured?
+- Are mirror-sensitive directions explicit where needed?
+- Are framing, viewpoint, symmetry/asymmetry, and composition captured?
 - Did you account for negative space, major shadow shapes, or leading lines if they dominate the image?
 - Did you capture depth-of-field / blur behavior when it strongly affects the image?
 - If source transparency is available, did you avoid mistaking the preview matte for a real background?
@@ -226,6 +250,7 @@ Before answering, silently verify:
 - For recognizable characters or mascots, did you separate canonical design traits from image-specific traits?
 - Are the top visual anchors present early in the prompt?
 - Did you avoid unsupported technical guesses?
+- Did you preserve anchor strength instead of exaggerating it?
 - Did you avoid generic quality-word padding?
 - Did you include only relevant subject-specific details?
 - Does the final prompt read naturally and remain directly usable?
@@ -237,3 +262,8 @@ Revise internally if any answer is no. Do not reveal hidden reasoning.
 - For people, products, food, architecture, interiors, vehicles, animals, landscapes, still life, subject-prop interactions, recognizable characters, and illustration-specific analysis: `references/visual-analysis.md`
 - For GPT Image, Seedream, Qwen-Image, FLUX, SDXL, and Gemini Image prompt adaptation: `references/model-adapters.md`
 - For expanded structured output and JSON-friendly fields: `references/output-schema.md`
+
+
+## Fidelity limitation
+
+Prompt-only recreation can reproduce composition, style, pose, and visual type, but it is not a reliable identity-preservation method for a specific real person. If exact facial identity is the user's goal, say that a reference-conditioned image-to-image or identity-preserving workflow is more appropriate than text-only prompting. This does not apply to simply matching a generic portrait style.
