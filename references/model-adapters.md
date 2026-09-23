@@ -32,20 +32,47 @@ Prioritize:
 
 For recreation, put the visual anchors in the first portion of the prompt.
 
-## Qwen-Image
+## Qwen-Image 2.1
 
-Use clear, structured natural language.
+Prefer the official Qwen-Image-2.1 prompt-rewrite shape when the user's workflow supports it:
 
-Make explicit:
+- write one detailed English description of the finished image
+- describe it as an observer, not as a command to the renderer
+- keep the aspect ratio separate from the prose as `wh_ratio`
+- preserve a user/source ratio when known instead of silently switching to a nearby ratio
+- do not put pixel dimensions or aspect-ratio numbers inside the descriptive paragraph
 
-- subject count and identity
-- pose/action
-- relative positions
-- composition
-- color
-- environment
+For text-to-image recreation, make the spatial map unusually explicit:
+
+- medium/style + subject + background in the opening sentence
+- source orientation
+- subject center position and approximate scale in the frame
+- left/right orientation and any mirror-sensitive relationships
+- upper-left / top / center / right / lower-third / edge positions when relevant
+- foreground, midground, and background order
+- lighting source, direction, quality, and cast-shadow direction
+- balance and symmetry/asymmetry in the closing sentence
+
+For a simple single-subject reference, do not mechanically inflate the prompt to hundreds of words when that would invent unsupported details. Be detailed about geometry and relationships, not imaginative about absent content.
+
+Recommended machine-friendly output when requested:
+
+```json
+{"rewritten_prompt":"<English finished-image description>","wh_ratio":"<source ratio such as 2:3 or 3:2>"}
+```
+
+If the local workflow accepts only a text prompt, return the English `rewritten_prompt` and separately tell the user which ratio to set in the workflow.
 
 Avoid unnecessarily fragmented tags.
+
+### Qwen-Image 2.1 fidelity notes
+
+- A 600×900 reference is 2:3; do not substitute 3:4 merely because it is a common portrait preset.
+- A 600×400 reference is 3:2; do not substitute 4:3.
+- Explicitly state mirror-sensitive directions, e.g. which side a flower head, tail, face, or prop occupies.
+- Preserve asymmetry. Do not turn a loose forest path into a perfectly centered tunnel unless the reference is actually symmetric.
+- For recognizable characters, if the user wants the exact character, use the character name plus canonical traits and the source-specific pose. If the user wants a generic/non-IP equivalent, omit the name.
+
 
 ## FLUX
 
