@@ -38,12 +38,17 @@ Output only relevant fields. For a person this may include:
 - 视线：
 - 人物与环境关系：
 
+For animals, products, still life, landscapes, or recognizable characters, output the corresponding relevant fields instead.
+
 ### 5. 光线
 
 - 主光方向：
 - 光质：
 - 明暗关系：
+- 阴影几何：
 - 特殊光效：
+
+Only include 阴影几何 when the shadow shape materially affects resemblance.
 
 ### 6. 色彩
 
@@ -60,6 +65,33 @@ List only the materials that meaningfully affect the recreation.
 ### 8. 视觉锚点
 
 List 3–7 items in descending importance.
+
+### 8.5. 关系锚点
+
+Only output when subject-object interaction is important.
+
+Examples:
+
+- 狗嘴里横叼一支黄色郁金香
+- 单枝玫瑰插在透明玻璃瓶中
+- 人物双手捧着花束
+
+### 8.6. 构图锚点
+
+Only output when composition strongly affects similarity.
+
+Examples:
+
+- 大片留白集中在主体上方和右侧
+- 斜向三角形光影切割背景
+- 小路作为引导线通向画面深处亮部
+- 浅景深使主体清晰、背景明显虚化
+
+### 8.7. 角色固有锚点
+
+Only output for recognizable fictional characters, mascots, or recurring standardized designs.
+
+Separate persistent identity traits from the current image's pose, angle, background, and rendering treatment.
 
 ### 9. 可观察事实与推测
 
@@ -89,6 +121,9 @@ For routine use, prefer:
 
 - 画面概述
 - 视觉锚点
+- 关系锚点（if interaction matters）
+- 构图锚点（if composition strongly affects similarity）
+- 角色固有锚点（for recognizable recurring characters）
 - 正向提示词
 - Negative/Avoid when needed
 - target-model note when needed
@@ -117,6 +152,9 @@ When the user requests JSON or the skill is used programmatically, use stable ke
   "visual_anchors": [
     {"rank": 1, "description": ""}
   ],
+  "relationship_anchors": [],
+  "composition_anchors": [],
+  "canonical_character_anchors": [],
   "observations": [],
   "implementation_suggestions": [],
   "positive_prompt": "",
