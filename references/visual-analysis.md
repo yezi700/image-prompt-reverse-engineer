@@ -26,14 +26,17 @@ Use only the sections that match the image.
 For high-fidelity recreation, create a compact spatial map before detailed subject analysis:
 
 - source width:height ratio
-- primary subject center: left / center / right and upper / middle / lower, or approximate normalized coordinates
-- primary subject scale: approximate fraction of frame width and height
+- primary subject center: left / center / right and upper / middle / lower; for fidelity-critical work, prefer approximate normalized coordinates or percentages
+- primary subject scale: approximate fraction or percentage of frame width and height
+- approximate subject bounding box when useful: left, top, right, bottom as percentages of the frame
 - top, bottom, left, and right margins
 - direction of gaze, face, body, props, stems, roads, vehicles, shadows, and diagonals
 - symmetry versus asymmetry
 - crop boundaries and whether limbs/objects touch or leave the frame
 
-Treat mirror-sensitive relationships as explicit facts. "Tulip flower head on the right side of the dog's mouth" is different from the mirrored version.
+Treat mirror-sensitive relationships as explicit facts.
+
+Prefer measurable wording over aesthetic shorthand when the task is recreation. "Head center around 50% of frame width and 35% of frame height; full subject occupies roughly 60% of frame height" is more reproducible than "nicely centered portrait." "Tulip flower head on the right side of the dog's mouth" is different from the mirrored version.
 
 Preserve the strength of composition features. A loose corridor should not be rewritten as a perfectly centered tunnel unless the reference is actually that symmetric.
 
@@ -250,6 +253,21 @@ Example:
 If the subject is a recurring character or mascot, also read the **Recognizable characters and mascots** section.
 
 When the source is a PNG or other format that may contain transparency, verify transparency when tools or metadata are available. Do not treat the preview matte as a real black or white background.
+
+## Imperfections and anti-beautification
+
+Image generators often regularize or beautify reference details. When resemblance depends on non-ideal traits, record them as positive anchors rather than assuming the model will preserve them.
+
+Examples:
+
+- wilted, curled, torn, or browned flower petals
+- uneven or sparse leaves
+- scratched, dusty, cloudy, dented, worn, or imperfect surfaces
+- irregular spacing of trees, windows, props, or repeated objects
+- natural skin texture, flyaway hair, uneven beard density, clothing wrinkles
+- asymmetric object shapes or non-perfect alignment
+
+Describe the imperfection concretely. Avoid vague words such as "realistic imperfections" when a visible trait can be named.
 
 ## Minimal still life and negative space
 
