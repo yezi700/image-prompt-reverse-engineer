@@ -15,7 +15,17 @@ Use the compact default unless the user asks for a detailed teardown, machine-re
 
 2–5 sentences describing what the image presents.
 
-### 3. 画面骨架
+### 3. 源图几何
+
+- 原始尺寸：
+- 原始宽高比：
+- 主体中心位置：
+- 主体占画面比例：
+- 左右朝向 / 镜像敏感信息：
+- 主要对角线方向：
+- 对称 / 非对称程度：
+
+### 4. 画面骨架
 
 - 景别：
 - 机位：
@@ -26,7 +36,7 @@ Use the compact default unless the user asks for a detailed teardown, machine-re
 - 中景：
 - 背景：
 
-### 4. 主体专项分析
+### 5. 主体专项分析
 
 Output only relevant fields. For a person this may include:
 
@@ -40,7 +50,7 @@ Output only relevant fields. For a person this may include:
 
 For animals, products, still life, landscapes, or recognizable characters, output the corresponding relevant fields instead.
 
-### 5. 光线
+### 6. 光线
 
 - 主光方向：
 - 光质：
@@ -50,7 +60,7 @@ For animals, products, still life, landscapes, or recognizable characters, outpu
 
 Only include 阴影几何 when the shadow shape materially affects resemblance.
 
-### 6. 色彩
+### 7. 色彩
 
 - 主色：
 - 辅助色：
@@ -58,15 +68,15 @@ Only include 阴影几何 when the shadow shape materially affects resemblance.
 - 饱和度：
 - 明度：
 
-### 7. 材质与质感
+### 8. 材质与质感
 
 List only the materials that meaningfully affect the recreation.
 
-### 8. 视觉锚点
+### 9. 视觉锚点
 
 List 3–7 items in descending importance.
 
-### 8.5. 关系锚点
+### 9.5. 关系锚点
 
 Only output when subject-object interaction is important.
 
@@ -76,7 +86,7 @@ Examples:
 - 单枝玫瑰插在透明玻璃瓶中
 - 人物双手捧着花束
 
-### 8.6. 构图锚点
+### 9.6. 构图锚点
 
 Only output when composition strongly affects similarity.
 
@@ -87,13 +97,13 @@ Examples:
 - 小路作为引导线通向画面深处亮部
 - 浅景深使主体清晰、背景明显虚化
 
-### 8.7. 角色固有锚点
+### 9.7. 角色固有锚点
 
 Only output for recognizable fictional characters, mascots, or recurring standardized designs.
 
 Separate persistent identity traits from the current image's pose, angle, background, and rendering treatment.
 
-### 9. 可观察事实与推测
+### 10. 可观察事实与推测
 
 #### 可以直接观察到
 
@@ -103,15 +113,15 @@ Concrete visual facts.
 
 Optional. Keep clearly separated from observations.
 
-### 10. 正向提示词
+### 11. 正向提示词
 
 One coherent, ready-to-use prompt. Put high-priority anchors early.
 
-### 11. Avoid / Negative
+### 12. Avoid / Negative
 
 Only when useful for the selected model/workflow.
 
-### 12. 模型适配版本
+### 13. 模型适配版本
 
 Only when the user specifies a target model or requests comparisons.
 
@@ -120,6 +130,7 @@ Only when the user specifies a target model or requests comparisons.
 For routine use, prefer:
 
 - 画面概述
+- 源图宽高比与几何约束
 - 视觉锚点
 - 关系锚点（if interaction matters）
 - 构图锚点（if composition strongly affects similarity）
@@ -139,6 +150,15 @@ When the user requests JSON or the skill is used programmatically, use stable ke
     "medium": "",
     "primary_subject": "",
     "secondary_subjects": []
+  },
+  "source_geometry": {
+    "dimensions": "",
+    "aspect_ratio": "",
+    "subject_center": "",
+    "subject_frame_fraction": "",
+    "mirror_sensitive_directions": [],
+    "dominant_diagonals": [],
+    "symmetry": ""
   },
   "visual_skeleton": {
     "shot_size": "",
