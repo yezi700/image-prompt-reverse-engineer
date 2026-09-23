@@ -13,6 +13,9 @@ Use only the sections that match the image.
 - Animals
 - Landscapes
 - Illustration and anime
+- Minimal still life and negative space
+- Subject-prop interaction
+- Recognizable characters and mascots
 - Lighting
 - Color
 - Materials
@@ -38,6 +41,16 @@ Over:
 
 "A girl posing naturally."
 
+For portraits, also identify the portrait subtype when useful:
+
+- studio headshot
+- business headshot
+- lifestyle portrait
+- fashion portrait
+- environmental portrait
+
+In these cases, expression, eye contact, hair silhouette, shirt/jacket shape, and background blur often matter more than exhaustive facial micro-description.
+
 Do not infer real identity, nationality, ethnicity, medical state, or other sensitive traits from appearance.
 
 ## Products
@@ -55,6 +68,8 @@ Prioritize:
 - background and commercial lighting
 
 For product recreation, product angle + geometry + material + lighting + background usually dominate resemblance.
+
+For minimalist product setups, also inspect negative space, backdrop geometry, support-surface lines, and hard-edged shadow shapes.
 
 ## Food
 
@@ -82,6 +97,8 @@ Analyze:
 - relation to ground, vegetation, sky, roads, people, vehicles
 - camera elevation and convergence/perspective
 
+Pay attention to repeated structural rhythm and strong leading lines when they dominate the image.
+
 Avoid claiming a specific architect unless explicitly established and useful to the user.
 
 ## Interiors
@@ -96,6 +113,8 @@ Analyze:
 - material palette
 - decor density
 - depth and circulation path
+
+When present, explicitly capture corridor-like visual channels, vanishing paths, repeated columns, or strong foreground framing.
 
 ## Vehicles
 
@@ -118,11 +137,34 @@ Analyze:
 
 - species/category when reasonably visible
 - fur / feathers / scales
-- color pattern
+- dominant color pattern
 - pose and motion
 - gaze
 - interaction with people/objects
 - environment
+- subject isolation versus environmental inclusion
+- depth-of-field / blur behavior when visually important
+
+Pay special attention to subject-object interaction.
+
+Examples of high-value interaction cues:
+
+- holding
+- carrying
+- biting
+- wearing
+- leaning on
+- standing on
+- sitting beside
+- looking toward
+
+Example:
+
+"A golden retriever puppy sits front-facing on a stone path and holds a yellow tulip horizontally in its mouth."
+
+This is much more useful than:
+
+"A cute dog with a flower."
 
 ## Landscapes
 
@@ -138,6 +180,31 @@ Analyze:
 - atmospheric perspective
 - foreground / midground / background layering
 - palette
+
+When present, strongly prioritize **leading lines** and **visual channels**, such as:
+
+- roads
+- trails
+- rivers
+- corridors
+- rows of trees
+- bridges
+- canyon gaps
+
+Also identify where the brightest area sits:
+
+- foreground
+- midground
+- background
+- off-center opening
+
+Example:
+
+"A forest path recedes into the distance between tall vertical trunks, guiding the eye toward a brighter central opening."
+
+This is more useful than:
+
+"A peaceful green forest with a path."
 
 ## Illustration and anime
 
@@ -159,9 +226,103 @@ Example:
 
 "clean thin line art, restrained pastel palette, soft cel-shaded shadows, sparse watercolor texture"
 
+If the subject is a recurring character or mascot, also read the **Recognizable characters and mascots** section.
+
+## Minimal still life and negative space
+
+For minimalist still life, simple product setups, and sparse editorial images, do not underestimate:
+
+- negative space
+- subject placement within empty space
+- major shadow shape
+- direction and boundary of light/shadow divisions
+- wall or backdrop texture
+- table or surface line
+- object tilt or stem direction
+- amount of visual breathing room
+
+In some images, these matter more than fine subject detail.
+
+Example:
+
+"A single pink rose stands in a clear cylindrical glass bottle half-filled with water, placed low in the frame against a pale pink textured wall, with a large diagonal sunlight-and-shadow split creating a geometric triangular shape across the background."
+
+## Subject-prop interaction
+
+Whenever a prop or secondary object is essential to resemblance, extract the interaction explicitly.
+
+Common interaction types:
+
+- holding
+- carrying
+- biting
+- wearing
+- hugging
+- sitting on
+- standing beside
+- inserting into
+- placing on
+- leaning against
+
+Do not merely list both objects separately.
+
+Weak:
+
+"dog, tulip"
+
+Strong:
+
+"dog holding a tulip horizontally in its mouth"
+
+Weak:
+
+"rose, bottle"
+
+Strong:
+
+"single rose inserted into a clear bottle of water"
+
+If the interaction is visually central, it should appear early in the final prompt.
+
+## Recognizable characters and mascots
+
+When the image shows a recognizable fictional character, mascot, or recurring standardized design, split analysis into two layers.
+
+### A. Canonical design anchors
+
+Persistent traits that define the character across images:
+
+- silhouette
+- body proportions
+- head-to-body ratio
+- signature colors
+- facial layout
+- shell / belly / tail / ear / limb structure
+- iconic markings or body segmentation
+
+### B. Image-specific presentation anchors
+
+Traits specific to the current image:
+
+- pose
+- angle
+- facial expression
+- gesture
+- background
+- lighting
+- line quality
+- shading style
+
+For mascot-like or cartoon subjects, prioritize silhouette and structure before micro-detail.
+
+Examples:
+
+- a rounded, heavy blue-and-cream body silhouette with closed eyes and lifted arms
+- a small blue turtle-like character with a cream segmented belly and brown shell
+
 ## Lighting
 
-Describe only visible effects:
+Describe only visible effects.
 
 ### Direction
 
@@ -188,6 +349,18 @@ Describe only visible effects:
 - high contrast / low contrast
 - soft shadow / deep shadow
 - rim or edge light
+
+### Shadow geometry
+
+When a cast shadow or light boundary becomes a major compositional element, describe:
+
+- direction
+- edge hardness
+- approximate shape
+- area of the frame it occupies
+- whether it cuts across the background or subject
+
+Do not reduce a dominant geometric shadow to a generic phrase such as "dramatic lighting."
 
 ### Special effects
 
@@ -218,3 +391,4 @@ Only describe visible materials that matter to the recreation:
 - skin, hair, cotton, silk, denim, leather
 - metal, acrylic, plastic, glass
 - wood, stone, concrete, ceramic
+- flower petals, foliage, fur, feathers, water, food surfaces
