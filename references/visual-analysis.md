@@ -18,7 +18,24 @@ Use only the sections that match the image.
 - Recognizable characters and mascots
 - Lighting
 - Color
+- Geometry and directional fidelity
 - Materials
+
+## Geometry and directional fidelity
+
+For high-fidelity recreation, create a compact spatial map before detailed subject analysis:
+
+- source width:height ratio
+- primary subject center: left / center / right and upper / middle / lower, or approximate normalized coordinates
+- primary subject scale: approximate fraction of frame width and height
+- top, bottom, left, and right margins
+- direction of gaze, face, body, props, stems, roads, vehicles, shadows, and diagonals
+- symmetry versus asymmetry
+- crop boundaries and whether limbs/objects touch or leave the frame
+
+Treat mirror-sensitive relationships as explicit facts. "Tulip flower head on the right side of the dog's mouth" is different from the mirrored version.
+
+Preserve the strength of composition features. A loose corridor should not be rewritten as a perfectly centered tunnel unless the reference is actually that symmetric.
 
 ## People
 
@@ -49,7 +66,9 @@ For portraits, also identify the portrait subtype when useful:
 - fashion portrait
 - environmental portrait
 
-In these cases, expression, eye contact, hair silhouette, shirt/jacket shape, and background blur often matter more than exhaustive facial micro-description.
+In these cases, expression, eye contact, hair silhouette, shirt/jacket shape, subject scale in frame, headroom, and background blur often matter more than exhaustive facial micro-description.
+
+For a specific real person's exact likeness, text-only prompting is insufficiently reliable. Match observable portrait characteristics, but recommend reference-conditioned generation when identity fidelity is required.
 
 Do not infer real identity, nationality, ethnicity, medical state, or other sensitive traits from appearance.
 
@@ -191,7 +210,9 @@ When present, strongly prioritize **leading lines** and **visual channels**, suc
 - bridges
 - canyon gaps
 
-Also identify where the brightest area sits:
+Also identify whether the path/trees form a loose, asymmetric corridor or a strongly symmetric tunnel. Do not strengthen symmetry beyond the reference.
+
+Identify where the brightest area sits:
 
 - foreground
 - midground
@@ -240,7 +261,9 @@ For minimalist still life, simple product setups, and sparse editorial images, d
 - direction and boundary of light/shadow divisions
 - wall or backdrop texture
 - table or surface line
-- object tilt or stem direction
+- object tilt or stem direction, including left/right lean
+- subject center position and frame occupancy
+- exact direction of major diagonal light/shadow boundaries
 - amount of visual breathing room
 
 In some images, these matter more than fine subject detail.
@@ -285,6 +308,8 @@ Strong:
 "single rose inserted into a clear bottle of water"
 
 If the interaction is visually central, it should appear early in the final prompt.
+
+Also capture orientation. For example, "the flower head extends to the viewer's right and the stem to the left" is not interchangeable with the mirrored arrangement.
 
 ## Recognizable characters and mascots
 
